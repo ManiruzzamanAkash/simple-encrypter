@@ -6,9 +6,11 @@ Simple Encrypter npm package, that encrypt and descrypt a string. It's super sim
 
 ## Demo Live Link using react
 
-https://codesandbox.io/s/heuristic-butterfly-gr50i?file=/src/App.js
-
 [More than thousand talks...]
+
+1. Live Link with React Sandbox - https://codesandbox.io/s/heuristic-butterfly-gr50i?file=/src/App.js
+2. Demo Code Example - https://github.com/ManiruzzamanAkash/simple-encrypter/blob/master/demo
+
 
 
 ## Usage:
