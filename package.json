@@ -1,6 +1,6 @@
 {
   "name": "simple-encrypter",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Simple Encrypter npm package, that encrypt and descrypt a string. It's super simple and fast.",
   "main": "index.js",
   "scripts": {

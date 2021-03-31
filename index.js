@@ -6,6 +6,8 @@
  * @return string encrypted string
  */
 function encryptString(string) {
+    if (string.length === 0) return '';
+
     const privateSecret = "aa%cd(e$fgh1*23@45^6@";
     let encryptedString = privateSecret.split("")[0] + string.length;
     const stringParts = string.split("");
@@ -30,9 +32,11 @@ function encryptString(string) {
  * 
  * @param string encrypted string needs to unencrypt
  * 
- * @return string
+ * @return string decrypted string's back
  */
 function decryptString(string) {
+    if (string.length === 0) return '';
+
     let decryptedString = "";
     const encryptedLength = string.split("")[1];
     const totalVisitedCharacter = 3 + (encryptedLength % 2 !== 0 ? encryptedLength * 2 : encryptedLength * 2 - 1) - 1;
