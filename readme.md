@@ -1,8 +1,10 @@
 # Simple Encrypter `Javascript`
 
-Simple Encrypter npm package, that encrypt and descrypt a string. It's super simple and fast javascript text encrypter.
+Simple Encrypter npm package, that encrypt and descrypt a string. It's super simple and fast javascript text encrypter. 
+No needs of extra heavy `crypto` or other packages. Encrypt any string/number very easily.
 
 ---
+[![NPM](https://nodei.co/npm/simple-encrypter.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/simple-encryptor/)
 
 ## Demo Live Link using react
 
@@ -75,8 +77,21 @@ console.log(`decrypt-101010:`, decryptString(encryptString('101010'))); //101010
 
 Yeah, It's super simple. right..?
 
+## Features
+1. Simple Encrypter is super simple and fast encryption-decryption algorithm.
+1. Algorithm is so simple and no use extra heavy javascript crypto library. Performance is also in reason for this encrypting-decryption library.
+1. You can encrypt any string or number
 ## License:
 MIT
 
-## Contributor:
+## Any Issues ?
+If you found any issues, just post in github with your scenerio.
+https://github.com/ManiruzzamanAkash/simple-encrypter/issues
+
+
+## Can I contribute ?
+Yes, of-course you can contribute. Just create Pull Request in github and it'll be approved if valid works.
+https://github.com/ManiruzzamanAkash/simple-encrypter/pulls
+
+## Author:
 Md. Maniruzzaman Akash <manirujjamanakash@gmail.com> (https://akash.devsenv.com)
