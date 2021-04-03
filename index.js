@@ -1,4 +1,12 @@
 /**
+ * private Secret
+ * 
+ * @since 0.0.4
+ */
+ const privateSecret        = "aa%cd(e$fgh1*23@45^6@12FH";
+ const privateSecretLength  = privateSecret.length;
+
+/**
  * Encrypt String
  * 
  * @since 0.0.1
@@ -10,12 +18,14 @@
 function encryptString(string) {
     if (string.length === 0) return '';
 
-    const privateSecret = "aa%cd(e$fgh1*23@45^6@";
-    let encryptedString = privateSecret.split("")[0] + string.length;
+    /** Step1: Get first character from private secret and add to `encryptedString` */
+    let encryptedString = privateSecret.split("")[0];
+    
+    /** Step2: Make String as array and secret as array */
     const stringParts   = string.split("");
     const secretParts   = privateSecret.split("");
 
-    // Add string parts inside the private secret parts
+    /** Step3: Concat string parts with the private secret parts */
     for (let i = 0; i < secretParts.length; i++) {
         const text = secretParts[i];
 
@@ -42,61 +52,23 @@ function decryptString(string) {
     if (string.length === 0) return '';
 
     const encryptedStringParts  = string.split("");
+    const startLength = 2;
 
-    // Get the second digit of the string, or number length
-    let encryptedLength = '';
-    for (let i = 0; i < encryptedStringParts.length; i++) {
-        const el = encryptedStringParts[i];
-        if(i > 0){
-            if(!isNaN(el)) {
-                encryptedLength += el;
-            } else {
-                break;
-            }
-        }
-    }
+    /** Step1: Calculate `encryptStringLength` total - ( startLength + secret length) */
+    let encryptedLength = encryptedStringParts.length - ( startLength + privateSecretLength) + 1;
 
-    // Starting point could be from 3 or 4 or 5 based on character length.
-    let startLength = 3;
-    if( encryptedLength >= 10 && encryptedLength < 100 ) {
-        startLength      = 4;
-    } else if( encryptedLength >= 100 && encryptedLength < 1000 ) {
-        startLength      = 5;
-    }
+    /** Step2: Replace array by deleting before it's index */
+    encryptedStringParts.splice(0, startLength);
 
-    let textReadLength = 0;
-    if( encryptedLength % 2 !== 0 ){
-        textReadLength = (encryptedLength * 2) - 1;
-    } else {
-        textReadLength = ( encryptedLength * 2 );
-    }
-
+    /** Step3: Initializes takens data */
+    let taken = 0, decryptedString = '';
     
-    const totalVisitedCharacter = startLength + textReadLength;
-    let decryptedString         = "";
-    startLength = startLength - 1;
-
-    for (let index = 0; index < encryptedStringParts.length; index++) {
-        
-        console.log(`startLength`, startLength);
-        console.log(`index`, index);
-
-        if (index >= startLength && index < totalVisitedCharacter) {
-            const es = encryptedStringParts[index];
-            const es_m1 = encryptedStringParts[index - 1];
-
-            if ( encryptedLength % 2 !== 0 ) {
-                if ( index % 2 !== 0 ) {
-                    decryptedString += es;
-                }
-            }
-            
-            if( encryptedLength % 2 === 0 ) {
-                if ( index % 2 === 0 ) {
-                    decryptedString += es;
-                }
-            }
-
+    /** Step4: for i to encryptStringLength length, replace actual string */
+    for (let i = 0; i < encryptedStringParts.length; i++) {
+        const ep = encryptedStringParts[i];
+        if( (i % 2 === 0) && taken < encryptedLength ) {
+            decryptedString += ep;
+            taken++;
         }
     }
 
